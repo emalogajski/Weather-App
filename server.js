@@ -1,3 +1,15 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const weatherKey = process.env.WEATHER_API_KEY;
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
+const getFormattedDate = () => {
+  const newDate = new Date(); 
+  return `${newDate.getDate()}.${newDate.getMonth() + 1}.${newDate.getFullYear()}`;
+}
+
+const axios = require('axios');
+
 const express = require('express');
 
 const app = express();
@@ -17,25 +29,42 @@ const port = 3000;
 app.listen(port, listening);
 
 function listening () {
-    console.log("server running");
-    console.log(`running on localhost: ${port}`);
-};
+  console.log("server running");
+  console.log(`running on localhost: ${port}`);
+}
 
-const projectData = {};
+const projectData = [];
 
-app.post('/getdata', addData);
+app.post('/getTemperatureForCity', receiveZip);
 
-function addData (req, res) {
-        projectData.date = req.body.date;
-        projectData['temp'] = req.body.temp;
-        projectData['zip'] = req.body.zip;
-        projectData['feelings'] = req.body.feelings;
+async function getTemperature(zip) {
+  try {
+    const response = await axios.get(`${baseURL}${zip}${weatherKey}`);
+    console.log(response);
+    return response.data;
+  } catch(error) {
+    console.log(error);
+  }
+}
 
-        res.send(projectData);
-};
+async function receiveZip (req, res) {
+  const zip = req.body.zip;
+    
+  const data = await getTemperature(zip);
+  const newestWeatherData = {
+    temperatureInCelsius: data.main.temp,
+    zip,
+    id: Math.floor(Math.random() * 1000),
+    date: getFormattedDate(),
+    city: data.name,
+    feelsLike: data.main.feels_like,
+  };
+  projectData.push(newestWeatherData);
+  res.send(newestWeatherData);
+}
 
-app.get('/all', getData)
+app.get('/allData', getData)
 
 function getData(_, res) {
-    res.send(projectData);
+  res.send(projectData);
 }

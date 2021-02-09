@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-    <header>
-        <title>My Weather App</title>
+    <head>
         <link href="style.css" rel="stylesheet">
-    </header>
+    </head>
     <body>
-        <label for="feelings">Tell me how you feel today: </label>
-        <textarea placeholder="My feelings" id="feelings"></textarea>
-        <input id="zip" placeholder="Enter zip code here" type="number">
-        <div id="entryHolder">
-            <div id="date"></div>
-            <div id="temp"></div>
-            <div id="content"></div>
+        <header>
+            <title>My Weather App</title>
+            <h1>US Weather Update</h1>
+        </header>
+        <div class="input-and-button">
+            <input type="number" id="zip" placeholder="Enter US zip code here">
+            <button id="generate">Enter</button>
         </div>
-        <button id="generate">Give it to me!</button>
+        <div id="entry-holder">
+            <div class="date" id="date"></div>
+            <div class="city" id="city"></div>
+            <div class="temperature" id="temperature"></div>
+            <div class="feels-like" id="feels-like"></div>
+        </div>
     </body>
     <script src="app.js"></script>
 </html>
