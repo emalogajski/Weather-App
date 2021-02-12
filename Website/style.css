@@ -17,13 +17,6 @@ h1 {
     margin: 0;
 }
 
-label {
-    display: block;
-    font-size: 27px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
 .entry-holder {
     text-align: left;
     width: 185px;
@@ -78,13 +71,6 @@ button:hover {
     box-shadow: 2px 4px 5px rgb(79, 171, 233);
 }
 
-textarea {
-    background:#86b0e0;
-    color: #070e6e;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    width: 320px;
-}
 /* Reset style for input element on active to have no border*/
 input:focus,
 select:focus,
