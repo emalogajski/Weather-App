@@ -1,5 +1,10 @@
+$main-font: 'Oswald', sans-serif;
+$main-font-color: #070e6e;
+$button-input-background-color: #a5bcecb2;
+
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    // font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-align: center;
     margin: 0;
     background-image: url('./clouds.jpg');
@@ -42,10 +47,10 @@ input {
     border-radius: 10px;
     height: 60px;
     width: 12em;
-    background: #a5bcecb2;
-    color: #070e6e;
+    background: $button-input-background-color;
+    color: $main-font-color;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: $main-font;
     border: none;
     margin: 16px 16px;
 }
@@ -59,10 +64,10 @@ button {
     height: 40px;
     width: 120px;
     margin: auto 10px;
-    background: #a5bcecb2;
-    color: #070e6e;
+    background: $button-input-background-color;
+    color: $main-font-color;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: $main-font;
     border: none;
     cursor: pointer;
 }
@@ -82,15 +87,15 @@ button:focus {
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
     color: #070e6e83;
-    font-family: 'Oswald', sans-serif;
+    font-family: $main-font;
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #070e6e;
-    font-family: 'Oswald', sans-serif;
+    color: $main-font-color;
+    font-family: $main-font;
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #070e6e;
-    font-family: 'Oswald', sans-serif;
+    color: $main-font-color;
+    font-family: $main-font;
 }

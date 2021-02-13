@@ -1,3 +1,6 @@
+import './style.scss';
+const baseURL = 'http://localhost:3000';
+
 const button = document.getElementById('generate');
 const temperatureInCelsius = document.getElementById('temperature');
 const dateDiv = document.getElementById('date');
@@ -11,19 +14,19 @@ function getWeather () {
   const zip = document.getElementById('zip').value;
   dataHolder.classList.add('entry-holder');
 
-  postZip('/getTemperatureForCity', {zip})
+  postZip(zip)
     .then(getFinalData);
 }
 
 //POST
-const postZip = async (url = '', data = {}) => {
-  const res = await fetch(url, {
+const postZip = async (zip = '') => {
+  const res = await fetch(`${baseURL}/getTemperatureForCity`, {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({zip}),
   });
 
   try {

@@ -1,10 +1,13 @@
-// const path = require('path');
-// const webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './Website/app.js',
+  output: {
+    publicPath: ''
+  },
   mode: 'production',
   module: {
     rules: [
@@ -20,6 +23,10 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ]
   },
